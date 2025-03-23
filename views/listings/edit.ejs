@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') %>
+
+
+<body>
+    <form method="POST" action="/listings/<%= perticularListing.id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="price" class="form-label">Title</label>
+            <input type="text" name="listing[title]" value="<%= perticularListing.title%>" required class="form-control">
+            <div class="valid-feedback">Title Looks Good!</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" required><%= perticularListing.description%></textarea>
+            <div class="invalid-feedback">Enter a short description</div>
+        </div>
+
+        <div class="mb-3">
+            Orginal Listing Image <br>
+            <img src="<%= originalImageUrl %>" alt="Original Listing Image">
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input type="file" name="listing[image]" value="<%= perticularListing.image.url%>" class="form-control">
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" name="listing[price]" value="<%= perticularListing.price%>" class="form-control" required>
+                <div class="invalid-feedback">Price should be valid</div>
+            </div>
+
+            <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input type="country" name="listing[country]" value="<%= perticularListing.country%>" class="form-control" required>
+                <div class="invalid-feedback">Country should be valid</div>
+
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="listing[location]" value="<%= perticularListing.location%>" class="form-control" required>
+            <div class="invalid-feedback">Location should be valid</div>
+
+        </div>
+
+
+        <button class="btn btn-dark add-btn" type="submit">Edit</button>
+    </form>
+</body>
